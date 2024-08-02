@@ -5,7 +5,7 @@ services:
     env: node
     plan: free
     buildCommand: "npm install"
-    startCommand: "npm node server.js"
+    startCommand: "node server.js"
     envVars:
       - key: MONGO_URI
         value: "mongodb+srv://gabristack:Gabbo2611@cluster0.xyc1oxa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
