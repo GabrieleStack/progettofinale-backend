@@ -44,7 +44,8 @@ if (process.env.NODE_ENV === 'production') {
 
   // Gestisci tutte le altre richieste per servire la tua applicazione React
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../progetto-finale/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../progetto-finale/build', 'index.html'));git push origin main
+
   });
 }
 
