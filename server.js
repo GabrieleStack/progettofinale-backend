@@ -10,7 +10,10 @@ dotenv.config();
 const app = express();
 
 // Configurazione di CORS e JSON
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3002'  // Modifica questo URL se il frontend è ospitato altrove
+}));
+
 app.use(express.json());
 
 // Connessione a MongoDB
@@ -19,7 +22,7 @@ mongoose
   .then(() => console.log('mongoDB connesso'))
   .catch((err) => console.error('mongoDB non connesso', err));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
 // Configurazione delle rotte API
 app.use('/api', router);
