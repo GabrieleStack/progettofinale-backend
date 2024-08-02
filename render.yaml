@@ -1,7 +1,7 @@
 
 services:
   - type: web
-    name: cupstone-backend
+    name: progettofinale-backend
     env: node
     plan: free
     buildCommand: "npm install"
