@@ -54,3 +54,6 @@ app.listen(PORT, () => {
   console.log('Endpoint disponibili:');
   console.table(endpoints(app));
 });
+
+console.log(`NODE_ENV is set to: ${process.env.NODE_ENV}`);
+
