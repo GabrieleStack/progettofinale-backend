@@ -5,7 +5,6 @@ import cors from 'cors';
 import endpoints from 'express-list-endpoints';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import router from './routes/WineRoutes.js';
 
 // Carica le variabili d'ambiente
@@ -32,19 +31,19 @@ const PORT = process.env.PORT || 3002;
 
 // Ottieni il percorso della directory corrente
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
 
 // Configurazione delle rotte API
 app.use('/api', router);
 
 // Serve i file statici della build di React
 if (process.env.NODE_ENV === 'production') {
-  // Assicurati che la directory di build di React sia corretta
-  app.use(express.static(path.join(__dirname, '../progetto-finale/build')));
+  // Modifica il percorso in base alla struttura delle tue directory
+  app.use(express.static(path.resolve('progetto-finale/build')));
 
   // Gestisci tutte le altre richieste per servire la tua applicazione React
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../progetto-finale/build', 'index.html'));
+    res.sendFile(path.resolve('progetto-finale/build', 'index.html'));
   });
 }
 
@@ -56,4 +55,3 @@ app.listen(PORT, () => {
 });
 
 console.log(`NODE_ENV is set to: ${process.env.NODE_ENV}`);
-
