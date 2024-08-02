@@ -38,12 +38,12 @@ app.use('/api', router);
 
 // Serve i file statici della build di React
 if (process.env.NODE_ENV === 'production') {
-  // Modifica il percorso in base alla struttura delle tue directory
-  app.use(express.static(path.resolve('progetto-finale/build')));
+  // Assicurati che la directory di build di React sia corretta
+  app.use(express.static(path.join(__dirname, '../progetto-finale/build')));
 
   // Gestisci tutte le altre richieste per servire la tua applicazione React
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve('progetto-finale/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../progetto-finale/build', 'index.html'));
   });
 }
 
