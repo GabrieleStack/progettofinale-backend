@@ -4,9 +4,14 @@ import express from 'express';
 import cors from 'cors';
 import endpoints from 'express-list-endpoints';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import router from './routes/WineRoutes.js';
 
+// Carica le variabili d'ambiente
 dotenv.config();
+
+// Crea l'app Express
 const app = express();
 
 // Configurazione di CORS e JSON
@@ -22,7 +27,12 @@ mongoose
   .then(() => console.log('mongoDB connesso'))
   .catch((err) => console.error('mongoDB non connesso', err));
 
+// Imposta la porta
 const PORT = process.env.PORT || 3002;
+
+// Ottieni il percorso della directory corrente
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Configurazione delle rotte API
 app.use('/api', router);
@@ -38,6 +48,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+// Avvia il server
 app.listen(PORT, () => {
   console.log(`Server presente sulla porta ${PORT}`);
   console.log('Endpoint disponibili:');
