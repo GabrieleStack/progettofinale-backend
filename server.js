@@ -1,4 +1,3 @@
-
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import express from 'express';
@@ -41,12 +40,11 @@ app.use('/api', router);
 // Serve i file statici della build di React
 if (process.env.NODE_ENV === 'production') {
   // Assicurati che la directory di build di React sia corretta
-  app.use(express.static(path.join(__dirname, '../progetto-finale/build')));
+  app.use(express.static(path.join(__dirname, '../progetto-finale/progetto-finale/build')));
 
   // Gestisci tutte le altre richieste per servire la tua applicazione React
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../progetto-finale/build', 'index.html'));git push origin main
-
+    res.sendFile(path.join(__dirname, '../progetto-finale/progetto-finale/build', 'index.html'));
   });
 }
 
