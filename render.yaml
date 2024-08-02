@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 services:
   - type: web
     name: cupstone-backend
@@ -11,17 +11,3 @@ services:
         value: "mongodb+srv://gabristack:Gabbo2611@cluster0.xyc1oxa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
       - key: PORT
         value: "3001"
-=======
-services:
-  - type: web
-    name: progettofinale-backend
-    env: node
-    plan: free
-    buildCommand: "cd progettofinale-backend && npm install"
-    startCommand: "npm start"
-    envVars:
-      - key: MONGO_URI
-        value: "mongodb+srv://gabristack:Gabbo2611@cluster0.xyc1oxa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-      - key: PORT
-        value: "3001"
->>>>>>> a9d63dfd05dd2d9cb53e6f6b64c01f0d816f053d
