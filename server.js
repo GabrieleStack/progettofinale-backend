@@ -11,11 +11,21 @@ dotenv.config();
 // Crea l'app Express
 const app = express();
 
-// Configurazione di CORS e JSON
-app.use(cors({
-  origin: 'http://localhost:3002'  // Modifica questo URL per puntare al tuo frontend su Vercel
-}));
+// Whitelist di URL consentiti
+const whitelist = ['https://progettofinale-frontend11.vercel.app', 'http://localhost:3000'];
 
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Non consentito per CORS'));
+    }
+  }
+};
+
+// Configurazione di CORS e JSON
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Connessione a MongoDB
@@ -38,4 +48,3 @@ app.listen(PORT, () => {
 });
 
 console.log(`NODE_ENV is set to: ${process.env.NODE_ENV}`);
-
